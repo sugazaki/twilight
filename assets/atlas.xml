@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:ae6ce202dbad8e71dfe512ba027a28a5$ -->
+<TextureAtlas imagePath="atlas.png">
+    <SubTexture name="background_1" x="2" y="2" width="640" height="480"/>
+    <SubTexture name="tank_1" x="644" y="2" width="55" height="57"/>
+</TextureAtlas>
