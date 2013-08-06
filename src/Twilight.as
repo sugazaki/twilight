@@ -11,7 +11,7 @@ package
 	{
 		private var _starling:Starling;
 		
-		jjjj
+		jjjj 阿打发地方  安静空间看  打发地方
 		
 		public function Twilight()
 		{
