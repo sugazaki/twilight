@@ -11,6 +11,8 @@ package
 	{
 		private var _starling:Starling;
 		
+		
+		
 		public function Twilight()
 		{
 			if (stage) start();
