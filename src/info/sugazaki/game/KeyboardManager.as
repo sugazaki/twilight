@@ -22,6 +22,10 @@ package info.sugazaki.game
 		
 		public var RIGHT_KEY_DOWN:Boolean = false;
 		
+		public var J_KEY_DOWN:Boolean = false;
+		
+		public var K_KEY_DOWN:Boolean = false;
+		
 		public var keyDic:Dictionary = new Dictionary();
 		
 		public function KeyboardManager()
@@ -49,6 +53,12 @@ package info.sugazaki.game
 				case Keyboard.RIGHT:
 					RIGHT_KEY_DOWN = false;
 					break;
+				case Keyboard.J:
+					J_KEY_DOWN = false;
+					break;
+				case Keyboard.K:
+					K_KEY_DOWN = false;
+					break;
 				default:
 					keyDic[event.keyCode] = false;				
 			}
@@ -68,6 +78,12 @@ package info.sugazaki.game
 					break;
 				case Keyboard.RIGHT:
 					RIGHT_KEY_DOWN = true;
+					break;
+				case Keyboard.J:
+					J_KEY_DOWN = true;
+					break;
+				case Keyboard.K:
+					K_KEY_DOWN = true;
 					break;
 				default:
 					keyDic[event.keyCode] = true;		

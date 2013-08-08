@@ -1,7 +1,7 @@
 package info.sugazaki.view
 {
 	
-	import info.sugazaki.bean.Tank;
+	import info.sugazaki.entity.Tank;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;

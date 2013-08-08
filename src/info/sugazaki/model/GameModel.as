@@ -1,6 +1,6 @@
 package info.sugazaki.model
 {
-	import info.sugazaki.bean.Tank;
+	import info.sugazaki.entity.Tank;
 
 	public class GameModel
 	{

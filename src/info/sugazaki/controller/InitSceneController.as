@@ -4,11 +4,13 @@ package info.sugazaki.controller
 	
 	import flash.geom.Point;
 	
-	import info.sugazaki.bean.Tank;
+	import info.sugazaki.entity.Bullet;
+	import info.sugazaki.entity.Tank;
 	import info.sugazaki.game.KeyboardManager;
 	import info.sugazaki.game.MainLoop;
 	import info.sugazaki.model.GameModel;
 	import info.sugazaki.view.BackgroundScene;
+	import info.sugazaki.view.BulletSprite;
 	import info.sugazaki.view.MainScene;
 	import info.sugazaki.view.TankSprite;
 	
@@ -60,6 +62,10 @@ package info.sugazaki.controller
 			player2.name = "player2";
 			player2.position = new Point(200,400);
 			player2.speed = 5;
+			
+			var bullet:Bullet = new Bullet();
+			bullet.position = new Point(300,300);
+			
 			gameModel.addTank(player);
 			gameModel.addTank(player2);
 			
@@ -74,6 +80,12 @@ package info.sugazaki.controller
 			mainScene.addTank(tank);
 			mainScene.addTank(tank2);
 			
+			var bulletSprite:BulletSprite = new BulletSprite(bullet,assets.getTexture("bullet"));
+			mainScene.addChild(bulletSprite);
+			bulletSprite.x = 300;
+			bulletSprite.y = 300;
+			
+			//初始化键盘管理程序
 			keyboardManager.attach(mainScene.stage);
 			mainLoop.start();
 		}

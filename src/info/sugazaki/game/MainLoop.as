@@ -1,6 +1,6 @@
 package info.sugazaki.game
 {
-	import info.sugazaki.bean.Tank;
+	import info.sugazaki.entity.Tank;
 	import info.sugazaki.model.GameModel;
 	import info.sugazaki.util.DirectionEnum;
 	
