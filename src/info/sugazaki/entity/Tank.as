@@ -25,8 +25,20 @@ package info.sugazaki.entity
 		
 		private var _direction:int;
 		
+		private var _type:String;
+		
 		public function Tank()
 		{
+		}
+
+		public function get type():String
+		{
+			return _type;
+		}
+
+		public function set type(value:String):void
+		{
+			_type = value;
 		}
 
 		public function get direction():int

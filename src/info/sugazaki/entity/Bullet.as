@@ -12,8 +12,20 @@ package info.sugazaki.entity
 		
 		private var _damage:int;
 		
+		private var _type:String;
+		
 		public function Bullet()
 		{
+		}
+
+		public function get type():String
+		{
+			return _type;
+		}
+
+		public function set type(value:String):void
+		{
+			_type = value;
 		}
 
 		public function get damage():int

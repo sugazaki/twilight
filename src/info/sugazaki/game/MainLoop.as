@@ -1,11 +1,13 @@
 package info.sugazaki.game
 {
+	import info.sugazaki.entity.Bullet;
 	import info.sugazaki.entity.Tank;
 	import info.sugazaki.model.GameModel;
 	import info.sugazaki.util.DirectionEnum;
 	
 	import starling.animation.IAnimatable;
 	import starling.animation.Juggler;
+	import starling.events.EventDispatcher;
 
 	/**
 	 * 游戏主循环 
@@ -19,6 +21,9 @@ package info.sugazaki.game
 		
 		[Inject]
 		public var keyboard:KeyboardManager;
+		
+		[Dispatcher]
+		public var dispatcher:EventDispatcher;
 		
 		[Inject]
 		public var gameModel:GameModel;
@@ -69,10 +74,21 @@ package info.sugazaki.game
 			
 			//SHOOT
 			
+			
+			
+			//游戏逻辑
+			
+			
 		}
 		
 		public function shoot(player:Tank):void
 		{
+			if(keyboard.J_KEY_DOWN){
+				var bullet:Bullet = new Bullet();
+				bullet.position = player.position.clone();
+				bullet.speed = 5;
+			
+			}
 		
 		}
 		

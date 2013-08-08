@@ -16,6 +16,19 @@ package info.sugazaki.view
 			
 		}
 		
+		public function get bullets():Vector.<BulletSprite>
+		{
+			if(_bullets==null){
+				_bullets = new Vector.<BulletSprite>;
+			}
+			return _bullets;
+		}
+
+		public function set bullets(value:Vector.<BulletSprite>):void
+		{
+			_bullets = value;
+		}
+
 		public function get tanks():Vector.<TankSprite>
 		{
 			if(_tanks==null){
@@ -28,6 +41,12 @@ package info.sugazaki.view
 		{
 			tanks.push(tank);
 			this.addChild(tank);
+		}
+		
+		public function addBullet(bullet:BulletSprite):void
+		{	
+			bullets.push(bullet);
+			this.addChild(bullet);
 		}
 
 		public function get background():BackgroundScene

@@ -19,10 +19,13 @@ package info.sugazaki.mediator
 		}
 		
 		
-		[EventHandler(event="")]
 		public function initMainStage(){
 		
 		}
 		
+		[EventHandler(event="entityAddToScene")]
+		public function addEntityToScene(entity:Object){
+		
+		}
 	}
 }

@@ -37,11 +37,11 @@ package info.sugazaki.controller
 		[Inject]
 		public var keyboardManager:KeyboardManager;
 		
+		[Inject]
+		public var mainLoop:MainLoop;	
+		
 		[Dispatcher]
 		public var dispatcher:EventDispatcher;
-		
-		[Inject]
-		public var mainLoop:MainLoop;
 		
 		public function InitSceneController()
 		{
@@ -68,6 +68,7 @@ package info.sugazaki.controller
 			
 			gameModel.addTank(player);
 			gameModel.addTank(player2);
+			gameModel.addBullet(bullet);
 			
 			//初始化背景
 			var backgroud:BackgroundScene = new BackgroundScene(assets.getTexture("background_1"));
@@ -81,7 +82,7 @@ package info.sugazaki.controller
 			mainScene.addTank(tank2);
 			
 			var bulletSprite:BulletSprite = new BulletSprite(bullet,assets.getTexture("bullet"));
-			mainScene.addChild(bulletSprite);
+			mainScene.addBullet(bulletSprite);
 			bulletSprite.x = 300;
 			bulletSprite.y = 300;
 			

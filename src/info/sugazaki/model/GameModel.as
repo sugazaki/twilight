@@ -1,17 +1,41 @@
 package info.sugazaki.model
 {
+	import info.sugazaki.entity.Bullet;
 	import info.sugazaki.entity.Tank;
 
 	public class GameModel
 	{
 		private var _tanks:Vector.<Tank>;
 		
+		private var _bullets:Vector.<Bullet>;
+		
 		public function GameModel()
 		{
 		}
 		
-		public function addTank(tank:Tank):void{
+		public function addBullet(bullet:Bullet):void
+		{
+			bullets.push(bullet);
+		}
+		
+		
+		public function addTank(tank:Tank):void
+		{
 			tanks.push(tank);
+		}
+
+		public function get bullets():Vector.<Bullet>
+		{
+			if(_bullets == null)
+			{
+				_bullets = new Vector.<Bullet>();
+			}
+			return _bullets;
+		}
+
+		public function set bullets(value:Vector.<Bullet>):void
+		{
+			_bullets = value;
 		}
 
 		public function get tanks():Vector.<Tank>
