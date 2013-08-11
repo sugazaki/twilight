@@ -40,6 +40,7 @@ package info.sugazaki.mediator
 		public function onEnterFrame(event:EnterFrameEvent):void{
 			for each(var tankSprite:TankSprite in tankSprites)
 			{
+			
 				tankSprite.updatePosition();
 			}
 		}

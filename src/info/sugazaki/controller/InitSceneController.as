@@ -9,6 +9,7 @@ package info.sugazaki.controller
 	import info.sugazaki.game.KeyboardManager;
 	import info.sugazaki.game.MainLoop;
 	import info.sugazaki.model.GameModel;
+	import info.sugazaki.util.Vector2D;
 	import info.sugazaki.view.BackgroundScene;
 	import info.sugazaki.view.BulletSprite;
 	import info.sugazaki.view.MainScene;
@@ -55,16 +56,14 @@ package info.sugazaki.controller
 			
 			var player:Tank = new Tank();
 			player.name = "player";
-			player.position = new Point(200,200);
-			player.speed = 5;
+			player.position = new Vector2D(200,200);
 			
 			var player2:Tank = new Tank();
 			player2.name = "player2";
-			player2.position = new Point(200,400);
-			player2.speed = 5;
+			player2.position = new Vector2D(200,400);
 			
 			var bullet:Bullet = new Bullet();
-			bullet.position = new Point(300,300);
+			bullet.position = new Vector2D(300,300);
 			
 			gameModel.addTank(player);
 			gameModel.addTank(player2);

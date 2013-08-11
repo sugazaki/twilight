@@ -1,6 +1,8 @@
 package info.sugazaki.entity
 {
 	import flash.geom.Point;
+	
+	import info.sugazaki.util.Vector2D;
 
 	/**
 	 * Tank实体类包含基础属性 
@@ -17,28 +19,16 @@ package info.sugazaki.entity
 		
 		private var _attack:int;
 		
-		private var _speed:int;
-		
-		private var _position:Point = new Point();
-		
-		private var _rotation:int;
-		
 		private var _direction:int;
+		
+		private var _position:Vector2D = new Vector2D();
+		
+		private var _speed:Vector2D = new Vector2D();
 		
 		private var _type:String;
 		
 		public function Tank()
 		{
-		}
-
-		public function get type():String
-		{
-			return _type;
-		}
-
-		public function set type(value:String):void
-		{
-			_type = value;
 		}
 
 		public function get direction():int
@@ -51,14 +41,34 @@ package info.sugazaki.entity
 			_direction = value;
 		}
 
-		public function get rotation():int
+		public function get speed():Vector2D
 		{
-			return _rotation;
+			return _speed;
 		}
 
-		public function set rotation(value:int):void
+		public function set speed(value:Vector2D):void
 		{
-			_rotation = value;
+			_speed = value;
+		}
+
+		public function get position():Vector2D
+		{
+			return _position;
+		}
+
+		public function set position(value:Vector2D):void
+		{
+			_position = value;
+		}
+
+		public function get type():String
+		{
+			return _type;
+		}
+
+		public function set type(value:String):void
+		{
+			_type = value;
 		}
 
 		public function get x():Number
@@ -71,25 +81,6 @@ package info.sugazaki.entity
 			return _position.y;
 		}
 		
-		public function get position():Point
-		{
-			return _position;
-		}
-
-		public function set position(value:Point):void
-		{
-			_position = value;
-		}
-
-		public function get speed():int
-		{
-			return _speed;
-		}
-
-		public function set speed(value:int):void
-		{
-			_speed = value;
-		}
 
 		public function get attack():int
 		{

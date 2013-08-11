@@ -50,5 +50,10 @@ package info.sugazaki.view
 			_bulletImage = value;
 		}
 
+		public function updatePosition():void
+		{
+			this.x = bullet.position.x;
+			this.y = bullet.position.y;
+		}
 	}
 }
