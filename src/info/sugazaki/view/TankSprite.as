@@ -55,10 +55,10 @@ package info.sugazaki.view
 		}
 		
 		public function updatePosition():void
-		{
+		{		
 			this.x = tank.x;
 			this.y = tank.y;
-			this.rotation = Math.PI * (tank.direction * 45)/180;
+			this.rotation = tank.direction;
 		}
 	}
 }

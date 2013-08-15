@@ -19,11 +19,17 @@ package info.sugazaki.entity
 		
 		private var _attack:int;
 		
-		private var _direction:int;
+		private var _direction:Number;
+		
+		private var _steeringForce:Vector2D = new Vector2D();
 		
 		private var _position:Vector2D = new Vector2D();
 		
-		private var _speed:Vector2D = new Vector2D();
+		private var _velocity:Vector2D = new Vector2D();
+		
+		private var _maxSpeed:Number = 5;
+		
+		private var _maxForce:Number = 2;
 		
 		private var _type:String;
 		
@@ -31,24 +37,49 @@ package info.sugazaki.entity
 		{
 		}
 
-		public function get direction():int
+		public function get steeringForce():Vector2D
 		{
-			return _direction;
+			return _steeringForce;
 		}
 
-		public function set direction(value:int):void
+		public function set steeringForce(value:Vector2D):void
 		{
-			_direction = value;
+			_steeringForce = value;
 		}
 
-		public function get speed():Vector2D
+		public function get maxForce():Number
 		{
-			return _speed;
+			return _maxForce;
 		}
 
-		public function set speed(value:Vector2D):void
+		public function set maxForce(value:Number):void
 		{
-			_speed = value;
+			_maxForce = value;
+		}
+
+		public function get maxSpeed():Number
+		{
+			return _maxSpeed;
+		}
+
+		public function set maxSpeed(value:Number):void
+		{
+			_maxSpeed = value;
+		}
+
+		public function get direction():Number
+		{			
+			return this.velocity.angle;
+		}
+
+		public function get velocity():Vector2D
+		{
+			return _velocity;
+		}
+
+		public function set velocity(value:Vector2D):void
+		{
+			_velocity = value;
 		}
 
 		public function get position():Vector2D
@@ -120,6 +151,15 @@ package info.sugazaki.entity
 		public function set id(value:int):void
 		{
 			_id = value;
+		}
+		
+		public function updatePosition():void
+		{
+			this.steeringForce = steeringForce.truncate(this.maxForce);
+			this.velocity = velocity.add(this.steeringForce);
+			this.position = position.add(this.velocity);
+			this.steeringForce = new Vector2D();
+			
 		}
 
 	}

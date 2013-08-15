@@ -103,8 +103,9 @@ package info.sugazaki.game
 			
 			for each(var tank:Tank in gameModel.tanks)
 			{
-				tank.position = tank.position.add(tank.speed);
+				tank.updatePosition();
 			}
+			
 			
 		}
 		
@@ -120,7 +121,7 @@ package info.sugazaki.game
 				bullet.position = player.position.clone();
 				bullet.speed = new Vector2D();
 				bullet.speed.length = 10;
-				bullet.speed.angle = (player.direction *45 - 90)/180 * Math.PI;
+				bullet.speed.angle = player.direction;
 				
 				//向数据层添加数据
 				gameModel.addBullet(bullet);
@@ -135,27 +136,40 @@ package info.sugazaki.game
 		 */
 		public function move(player:Tank):void
 		{
+			
+			var desiredVelocity:Vector2D = new Vector2D();
+			var steerForce:Vector2D;
+			var isKeydown:Boolean = false;
+			
 			if(keyboard.UP_KEY_DOWN)
 			{
-				player.speed = new Vector2D(0,-1*SPEED); 
-				player.direction = DirectionEnum.UP;
-			}else if(keyboard.DOWN_KEY_DOWN)
-			{
-				player.speed = new Vector2D(0,SPEED); 
-				player.direction = DirectionEnum.DOWN;
-			}else if(keyboard.LEFT_KEY_DOWN)
-			{
-				player.speed = new Vector2D(-1*SPEED,0); 
-				player.direction = DirectionEnum.LEFT;
-			}else if(keyboard.RIGHT_KEY_DOWN)
-			{
-				player.speed = new Vector2D(SPEED,0); 
-				player.direction = DirectionEnum.RIGHT;
-			}else
-			{
-				player.speed = new Vector2D();
+				desiredVelocity = desiredVelocity.add(Vector2D.UP);
+				isKeydown = true;
 			}
 			
+			if(keyboard.DOWN_KEY_DOWN)
+			{
+				desiredVelocity = desiredVelocity.add(Vector2D.DOWN);
+				isKeydown = true;
+			}
+			
+			if(keyboard.LEFT_KEY_DOWN)
+			{
+				desiredVelocity = desiredVelocity.add(Vector2D.LEFT);
+				isKeydown = true;
+			}
+			
+			if(keyboard.RIGHT_KEY_DOWN)
+			{
+				desiredVelocity = desiredVelocity.add(Vector2D.RIGHT);
+				isKeydown = true;
+			}
+			
+			if(isKeydown){
+				desiredVelocity = desiredVelocity.multiply(player.maxSpeed);
+				steerForce = desiredVelocity.subtract(player.velocity);
+				player.steeringForce = player.steeringForce.add(steerForce);
+			}
 		}
 		
 	}

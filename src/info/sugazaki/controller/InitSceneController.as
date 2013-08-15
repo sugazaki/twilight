@@ -61,13 +61,14 @@ package info.sugazaki.controller
 			var player2:Tank = new Tank();
 			player2.name = "player2";
 			player2.position = new Vector2D(200,400);
+		
 			
 			var bullet:Bullet = new Bullet();
 			bullet.position = new Vector2D(300,300);
 			
 			gameModel.addTank(player);
-			gameModel.addTank(player2);
-			gameModel.addBullet(bullet);
+//			gameModel.addTank(player2);
+//			gameModel.addBullet(bullet);
 			
 			//初始化背景
 			var backgroud:BackgroundScene = new BackgroundScene(assets.getTexture("background_1"));
@@ -78,10 +79,10 @@ package info.sugazaki.controller
 			//初始化一个Tank
 			var tank2:TankSprite = new TankSprite(player2,assets.getTexture("tank_1"));
 			mainScene.addTank(tank);
-			mainScene.addTank(tank2);
+//			mainScene.addTank(tank2);
 			
 			var bulletSprite:BulletSprite = new BulletSprite(bullet,assets.getTexture("bullet"));
-			mainScene.addBullet(bulletSprite);
+//			mainScene.addBullet(bulletSprite);
 			bulletSprite.x = 300;
 			bulletSprite.y = 300;
 			
