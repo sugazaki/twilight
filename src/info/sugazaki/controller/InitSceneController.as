@@ -3,6 +3,7 @@ package info.sugazaki.controller
 	import com.creativebottle.starlingmvc.views.ViewManager;
 	
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	import info.sugazaki.entity.Bullet;
 	import info.sugazaki.entity.Tank;
@@ -51,6 +52,8 @@ package info.sugazaki.controller
 		[EventHandler(event="initScene")]
 		public function initScene(event:Event):void
 		{
+			gameModel.scenceBorder = new Rectangle(0,0,640,480);
+			
 			var mainScene:MainScene = new MainScene();
 			viewManager.addView(mainScene);
 			
@@ -58,17 +61,7 @@ package info.sugazaki.controller
 			player.name = "player";
 			player.position = new Vector2D(200,200);
 			
-			var player2:Tank = new Tank();
-			player2.name = "player2";
-			player2.position = new Vector2D(200,400);
-		
-			
-			var bullet:Bullet = new Bullet();
-			bullet.position = new Vector2D(300,300);
-			
 			gameModel.addTank(player);
-//			gameModel.addTank(player2);
-//			gameModel.addBullet(bullet);
 			
 			//初始化背景
 			var backgroud:BackgroundScene = new BackgroundScene(assets.getTexture("background_1"));
@@ -76,15 +69,7 @@ package info.sugazaki.controller
 			
 			//初始化一个Tank
 			var tank:TankSprite = new TankSprite(player,assets.getTexture("tank_1"));
-			//初始化一个Tank
-			var tank2:TankSprite = new TankSprite(player2,assets.getTexture("tank_1"));
 			mainScene.addTank(tank);
-//			mainScene.addTank(tank2);
-			
-			var bulletSprite:BulletSprite = new BulletSprite(bullet,assets.getTexture("bullet"));
-//			mainScene.addBullet(bulletSprite);
-			bulletSprite.x = 300;
-			bulletSprite.y = 300;
 			
 			//初始化键盘管理程序
 			keyboardManager.attach(mainScene.stage);

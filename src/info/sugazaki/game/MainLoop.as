@@ -38,9 +38,16 @@ package info.sugazaki.game
 		
 		private var SPEED:Number = 5;
 		
+		private var gameLogic:GameLogic;
+		
 		public function MainLoop()
 		{
-			
+		}
+		
+		[PostConstruct]
+		public function init():void
+		{
+			gameLogic = new GameLogic(gameModel);
 		}
 		
 		/**
@@ -73,6 +80,7 @@ package info.sugazaki.game
 		
 		public function execute():void
 		{
+			
 			var player:Tank = gameModel.getTankByName("player");
 			
 			//MOVE
@@ -81,12 +89,12 @@ package info.sugazaki.game
 			//SHOOT
 			shoot(player);
 			
+			//游戏逻辑
+			gameLogic.collisionDectect();
+						
+			
 			//更新所以物件的位置
 			updatePosition();
-			
-			
-			//游戏逻辑
-			
 			
 		}
 		
@@ -99,6 +107,12 @@ package info.sugazaki.game
 			for each(var bullet:Bullet in gameModel.bullets)
 			{
 				bullet.position = bullet.position.add(bullet.speed);
+				
+				if(juggler.elapsedTime - bullet.shootTime >= bullet.expireTime)
+				{
+					dispatcher.dispatchEventWith(GameEvent.BULLET_REMOVE_FROM_SCENE,false,bullet);
+					gameModel.bullets.splice(gameModel.bullets.indexOf(bullet),1);
+				}
 			}
 			
 			for each(var tank:Tank in gameModel.tanks)
@@ -122,10 +136,12 @@ package info.sugazaki.game
 				bullet.speed = new Vector2D();
 				bullet.speed.length = 10;
 				bullet.speed.angle = player.direction;
+				bullet.shootTime = juggler.elapsedTime;
+				bullet.expireTime = 3;
 				
 				//向数据层添加数据
 				gameModel.addBullet(bullet);
-				dispatcher.dispatchEventWith(GameEvent.ENTITY_ADD_TO_SCENE,false,bullet);
+				dispatcher.dispatchEventWith(GameEvent.BULLET_ADD_TO_SCENE,false,bullet);
 			}
 		}
 		
@@ -166,9 +182,12 @@ package info.sugazaki.game
 			}
 			
 			if(isKeydown){
-				desiredVelocity = desiredVelocity.multiply(player.maxSpeed);
+				desiredVelocity = desiredVelocity.normalize().multiply(player.maxSpeed);
 				steerForce = desiredVelocity.subtract(player.velocity);
 				player.steeringForce = player.steeringForce.add(steerForce);
+			}else
+			{
+				player.velocity.length = 0; 
 			}
 		}
 		

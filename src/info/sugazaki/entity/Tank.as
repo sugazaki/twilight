@@ -19,7 +19,7 @@ package info.sugazaki.entity
 		
 		private var _attack:int;
 		
-		private var _direction:Number;
+		private var _direction:Number = 0;
 		
 		private var _steeringForce:Vector2D = new Vector2D();
 		
@@ -33,8 +33,32 @@ package info.sugazaki.entity
 		
 		private var _type:String;
 		
+		private var _width:Number = 35;
+		
+		private var _height:Number = 35;
+		
 		public function Tank()
 		{
+		}
+
+		public function get height():Number
+		{
+			return _height;
+		}
+
+		public function set height(value:Number):void
+		{
+			_height = value;
+		}
+
+		public function get width():Number
+		{
+			return _width;
+		}
+
+		public function set width(value:Number):void
+		{
+			_width = value;
 		}
 
 		public function get steeringForce():Vector2D
@@ -68,8 +92,12 @@ package info.sugazaki.entity
 		}
 
 		public function get direction():Number
-		{			
-			return this.velocity.angle;
+		{	
+			if(velocity.length!=0){
+				_direction =velocity.angle;
+			}
+			
+			return _direction;
 		}
 
 		public function get velocity():Vector2D

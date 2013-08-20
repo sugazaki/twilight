@@ -33,16 +33,52 @@ package info.sugazaki.mediator
 		}
 		
 		/**
-		 * 添加物体到场景中
+		 * 添加Bullet到场景中
 		 * @param event
-		 * @param entity
 		 * @return 
 		 * 
 		 */
-		[EventHandler(event="entityAddToScene")]
-		public function addEntityToScene(event:Event):void{
+		[EventHandler(event="bulletAddToScene")]
+		public function addEntityToScene(event:Event):void
+		{
 			var bulletSprite:BulletSprite = new BulletSprite(event.data as Bullet,assets.getTexture("bullet"));
 			this.view.addBullet(bulletSprite);
 		}
+		
+		/**
+		 * 移除Bullet 
+		 * @param event
+		 * 
+		 */
+		[EventHandler(event="bulletRemoveFromScene")]
+		public function removeEntityToScent(event:Event):void
+		{
+			var bulletSprite:BulletSprite = this.getBulletSprite(event.data as Bullet);
+			if(bulletSprite != null)
+			{
+				this.view.removeBullet(bulletSprite);
+			}
+		}
+		
+		
+		/**
+		 * 根据Bullet查找BulletSprite 
+		 * @param bullet
+		 * @return 
+		 * 
+		 */
+		private function getBulletSprite(bullet:Bullet):BulletSprite
+		{
+			for each(var bulletSprite:BulletSprite in this.view.bullets)
+			{
+				if(bulletSprite.bullet == bullet)
+				{
+					return bulletSprite;	
+				}
+			}
+			
+			return null;
+		}
+		
 	}
 }

@@ -1,5 +1,7 @@
 package info.sugazaki.model
 {
+	import flash.geom.Rectangle;
+	
 	import info.sugazaki.entity.Bullet;
 	import info.sugazaki.entity.Tank;
 
@@ -9,10 +11,22 @@ package info.sugazaki.model
 		
 		private var _bullets:Vector.<Bullet>;
 		
+		private var _scenceBorder:Rectangle;
+		
 		public function GameModel()
 		{
 		}
 		
+		public function get scenceBorder():Rectangle
+		{
+			return _scenceBorder;
+		}
+
+		public function set scenceBorder(value:Rectangle):void
+		{
+			_scenceBorder = value;
+		}
+
 		public function addBullet(bullet:Bullet):void
 		{
 			bullets.push(bullet);

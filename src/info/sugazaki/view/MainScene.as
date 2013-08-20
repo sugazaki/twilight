@@ -43,10 +43,21 @@ package info.sugazaki.view
 			this.addChild(tank);
 		}
 		
+		public function removeTank(tank:TankSprite):void
+		{
+			this.tanks.splice(tanks.indexOf(tank),1);
+		}
+		
 		public function addBullet(bullet:BulletSprite):void
 		{	
 			bullets.push(bullet);
 			this.addChild(bullet);
+		}
+		
+		public function removeBullet(bullet:BulletSprite):void
+		{
+			bullets.splice(bullets.indexOf(bullet),1);
+			this.removeChild(bullet);
 		}
 
 		public function get background():BackgroundScene

@@ -8,7 +8,8 @@ package info.sugazaki.event
 		
 		
 		//游戏实体添加到场景中
-		public static const ENTITY_ADD_TO_SCENE:String = "entityAddToScene";
+		public static const BULLET_ADD_TO_SCENE:String = "bulletAddToScene";
+		public static const BULLET_REMOVE_FROM_SCENE:String = "bulletRemoveFromScene";
 		
 	}
 }

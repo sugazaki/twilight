@@ -24,9 +24,10 @@ package info.sugazaki.view
 			
 			this._bulletImage.scaleX = SCALE_BULLET;
 			this._bulletImage.scaleY = SCALE_BULLET;
-			
 			this._bulletImage.color = 0xFFFFFF * Math.random();
-		
+			
+			this.updatePosition();	
+			
 			this.addChild(_bulletImage);
 		}
 
